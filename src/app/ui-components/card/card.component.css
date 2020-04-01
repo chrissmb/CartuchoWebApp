@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.card {
+  display: inline-block;
+  border-collapse: collapse;
+  margin: 30px 10px;
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.1);
+  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.1);
+}
+
+.title {
+  padding: 10px 30px;
+  text-align: left;
+  background: #48f;
+  color: white;
+  font-weight: bold;
+}
+
+.ngcontent {
+  padding: 30px;
+}
+
+.ngfooter {
+  padding: 10px 20px;
+  text-align: right;
+}
+
+:host ::ng-deep .ngfooter * {
+  margin: 0px 10px;
+}
+
+/* Colors ***********************/
+.green {
+  background-color: #2ba;
+}
+
+.red {
+  background-color: #f34;
+}
+
+.purple {
+  background-color: #a6c;
+}
+
+.orange {
+  background-color: #f82;
+}

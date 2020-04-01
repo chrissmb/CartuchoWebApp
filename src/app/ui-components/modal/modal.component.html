@@ -1,0 +1,15 @@
+<div class="modal" [ngClass]="{show: show}">
+  <div [class]="'header ' + color">
+    <ng-content select=".header"></ng-content>
+    <a class="close" (click)="closeModal()">&times;</a>
+  </div>
+  <div class="body">
+    <ng-content select=".body"></ng-content>
+  </div>
+  <div class="footer">
+    <ng-content select=".footer"></ng-content>
+  </div>
+</div>
+
+<div class="bg-black show"
+    [ngClass]="{show: show}" (click)="closeModal()"></div>

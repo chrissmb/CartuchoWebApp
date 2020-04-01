@@ -1,0 +1,9 @@
+<div class="card" [ngStyle]="{'width.%': largura, 'margin-left.%': margin}">
+  <div [class]="'title ' + color">{{ title }}</div>
+  <div class="ngcontent">
+    <ng-content select=".content"></ng-content>
+  </div>
+  <div class="ngfooter">
+    <ng-content select=".footer"></ng-content>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.tabs {
+  list-style-type: none;
+  margin: 20px 0px;
+  padding: 0px;
+  display: flex;
+}
+
+.tabs li {
+  margin-bottom: -1px;
+  cursor: pointer;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.tabs a {
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+  color: #07f;
+}
+
+.tabs .active {
+  color: black;
+}
+
+.tabs .disable {
+  color: #AAA;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.tabs a:hover:not(.active) {
+  color: #036;
+}
+
+.tabs.guia {
+  border-bottom: solid thin #ddd;
+}
+
+.tabs.guia a {
+  border: solid thin transparent;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.tabs.guia a:hover:not(.active) {
+  border-color: #eee #eee #ddd;
+}
+
+.tabs.guia .active {
+  border-color: #ddd #ddd white;
+  background: white;
+}
+
+.tabs.pilula .active {
+  background-color: #07f;
+  color: white;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  
+  .tabs {
+    display: block;
+  }
+  
+  .tabs.guia a {
+    border: solid thin tansparent;
+    background-color: #f5f5f5;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-bottom: 3px;
+  }
+
+  .tabs.guia .active {
+    border-color: #ddd #ddd transparent #ddd;
+    background: white;
+  }
+
+  .tabs.guia a:hover:not(.active) {
+    border-color: #ddd #ddd transparent #ddd;
+  }
+
+  .tabs.guia {
+    border-bottom: solid thin transparent;
+  }
+}

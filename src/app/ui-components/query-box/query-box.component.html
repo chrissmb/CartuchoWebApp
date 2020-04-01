@@ -1,0 +1,17 @@
+<div class="container" [ngStyle]="{'width.%': largura}" (click)="clickInComponent()">
+  <label>{{ label }}</label>
+  <div class="input" (click)="clickInInput()">
+    <input type="text"
+        [(ngModel)]="inputValue"
+        (keyup)="digitou($event)"
+        (focus)="focusIn()" 
+        (focusout)="focusOut()"
+        #inputText/>
+    <div class="caret-btn"><span class="caret">&#9660;</span></div>
+  </div>
+  <div class="result-list" *ngIf="showItems" #resultList>
+    <div class="result-item" *ngFor="let item of itemsFiltered; let i = index"
+        [ngClass]="{selected: itemSelected == i}"
+        (mousedown)="selectItem(item)">{{ getItemLabel(item) }}</div>
+  </div>
+</div>

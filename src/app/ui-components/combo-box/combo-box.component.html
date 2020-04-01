@@ -1,0 +1,11 @@
+<div class="container" [ngStyle]="{'width.%': largura}">
+  <label>{{ label }}</label>
+  <select [(ngModel)]="value"
+      [title]="getMsgValidate()" 
+      [ngClass]="{error: hasError()}">
+    <option [ngValue]="null"></option>
+    <option *ngFor="let item of items" [ngValue]="getItemValue(item)">
+      {{ getItemLabel(item) }}
+    </option>
+  </select>
+</div>

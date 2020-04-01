@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 30px 10px;
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.1);
+  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.1);
+}
+
+:host ::ng-deep td {
+  padding: 10px 20px;
+}
+
+:host ::ng-deep table:not(.stripe):not(.border) td{
+  border: solid #eee;
+  border-width: 1px 0px;
+}
+
+:host ::ng-deep th {
+  padding: 10px 20px;
+  text-align: left;
+  background: #48f;
+  color: white;
+}
+
+.border {
+  border: solid #aaa;
+  border-width: 1px;
+}
+
+:host ::ng-deep .border td ,
+:host ::ng-deep .border th {
+  border: solid #aaa;
+  border-width: 1px 1px;
+}
+
+.center,
+:host ::ng-deep .center th {
+  text-align: center;
+}
+
+:host ::ng-deep .stripe tr {
+  border: none;
+}
+
+:host ::ng-deep .stripe tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+:host ::ng-deep .hover tr:hover {
+  background-color: #d9e9f9;
+}
+
+/* Colors ***********************/
+.green {
+  background-color: #2ba;
+}
+
+.red {
+  background-color: #f34;
+}
+
+.purple {
+  background-color: #a6c;
+}
+
+.orange {
+  background-color: #f82;
+}
+
+@media screen and (max-width: 600px) {
+
+  table {
+    display: block;
+    margin: 30px 0px;
+  }
+  :host ::ng-deep tbody {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: auto;
+  }
+
+  thead {
+    float: left;
+  }
+
+  .border {
+    border: none;
+  }
+
+  :host ::ng-deep tbody tr {
+    display: inline-block;
+  }
+
+  :host ::ng-deep thead tr {
+    display: block;
+  }
+
+  :host ::ng-deep th {
+    display: block;
+    text-align: right;
+  }
+
+  :host ::ng-deep td {
+    display: block;
+    text-align: left;
+  }
+}

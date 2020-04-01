@@ -1,0 +1,11 @@
+<div class="container" [ngStyle]="{'width.%': largura}">
+  <label>{{ label }}</label>
+  <input type="text" list="items" [(ngModel)]="inputValue" (change)="onChangeInput()"/>
+  <datalist id="items"
+      [title]="getMsgValidate()" 
+      [ngClass]="{error: hasError()}">
+    <option *ngFor="let item of items" [ngValue]="getItemValue(item)">
+      {{ getItemLabel(item) }}
+    </option>
+  </datalist>
+</div>

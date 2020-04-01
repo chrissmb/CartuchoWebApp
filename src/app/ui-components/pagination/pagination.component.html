@@ -1,0 +1,16 @@
+<ul class="pagination">
+  <li class="item start" (click)="primeiraPag()">|<</li>
+  <li class="item" (click)="paginaAnt()"><</li>
+  <li class="item" 
+      *ngFor="let pag of diminuiPaginacao(arrayPages)" 
+      [class.active]="pag == page"
+      (click)="mudaPag(pag)">
+    {{ pag }}
+  </li>
+  <li class="item" (click)="proxPagina()">></li>
+  <li class="item" (click)="ultimaPag()">>|</li>
+  <li class="item nolink" *ngIf="totalItens != null">total: {{ totalItens }}</li>
+  <li class="item nolink end">total pags.: {{ totalPages }}</li>
+</ul>
+
+<ng-content></ng-content>

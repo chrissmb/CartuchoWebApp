@@ -1,0 +1,6 @@
+<ul class="tabs" [ngClass]="type">
+  <li *ngFor="let tab of tabs; let i = index" (click)="setActiveTab(i)">
+    <a [ngClass]="{active: isActiveTab(i)}">{{ tab }}</a>
+  </li>
+</ul>
+<ng-content></ng-content>

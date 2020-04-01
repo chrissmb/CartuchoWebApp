@@ -1,11 +1,9 @@
 <div class="container" [ngStyle]="{'width.%': largura}">
   <label>{{ label }}</label>
   <input type="date"
-      [placeholder]="placeholder" 
-      [(ngModel)]="value" 
-      [title]="getMsgValidate()" 
+      [placeholder]="placeholder"
+      [(ngModel)]="value"
+      [title]="getMsgValidate()"
       [ngClass]="{error: hasError()}"
-      [maxlength]="maxlength != null? maxlength: null"
-      [minlength]="mminlength != null? minlength: null"
-      />
+  />
 </div>

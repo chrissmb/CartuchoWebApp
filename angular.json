@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "CartuchoWebapp"
+    }
+  },
+  "defaultProject": "CartuchoWebapp",
+  "cli": {
+    "analytics": false
+  }
 }

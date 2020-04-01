@@ -8,7 +8,6 @@ import { UiComponentsModule } from './ui-components/ui-components.module';
 @NgModule({
   declarations: [
     AppComponent,
-    UiComponentsModule,
   ],
   imports: [
     BrowserModule,

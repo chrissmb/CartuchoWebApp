@@ -2,7 +2,7 @@
 
 <li [ngClass]="{dropdown: item.dropdown != null, right: item.right}">
 
-  <a *ngIf="(item.dropdown == null) && !item.disabled" 
+  <a *ngIf="(item.dropdown == null) && !item.disabled"
       [routerLink]="item.link" (click)="clickIn()"
       routerLinkActive="active">
     {{ item.label }}
@@ -11,18 +11,18 @@
   <a *ngIf="item.disabled" class="disabled">{{ item.label }}</a>
 
   <!-- [routerLinkActiveOptions]="{ exact: false, __change_detection_hack__: id }" -->
-      
+
   <!-- [class.active]="isActive(item.link)" -->
 
-  <div *ngIf="item.dropdown != null && !disabled">
+  <div *ngIf="item.dropdown != null && !item.disabled">
     <a href="javascript:void(0)" (click)="clickIn()">
       {{ item.label }} <span class="caret">&#9660;</span>
     </a>
 
     <div class="dropdown-content" [ngClass]="{show: show}">
 
-      <a *ngFor="let subItem of item.dropdown" 
-          [routerLink]="subItem.link" 
+      <a *ngFor="let subItem of item.dropdown"
+          [routerLink]="subItem.link"
           routerLinkActive="active"
           [ngClass]="{disabled: subItem.disabled}">
         {{ subItem.label }}

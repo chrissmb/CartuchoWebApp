@@ -1,0 +1,7 @@
+<ul [ngClass]="classes()">
+  <ui-navbar-item *ngFor="let item of itens; let i = index" [item]="item" [sidebar]="sidebar"></ui-navbar-item>
+</ul>
+<div class="content">
+  <ng-content></ng-content>
+</div>
+

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Menu } from './menu';
+import { NavbarItem } from './navbar-item';
 
 @Component({
   selector: 'ui-navbar',
@@ -9,7 +9,7 @@ import { Menu } from './menu';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input() itens: Menu[];
+  @Input() itens: NavbarItem[];
   @Input() color = '';
   @Input() sidebar = false;
 

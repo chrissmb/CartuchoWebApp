@@ -10,6 +10,9 @@ import { UiComponentsModule } from './ui-components/ui-components.module';
   imports: [
     CommonModule,
     UiComponentsModule,
+  ],
+  exports: [
+    UiComponentsModule,
   ]
 })
 export class SharedModule { }

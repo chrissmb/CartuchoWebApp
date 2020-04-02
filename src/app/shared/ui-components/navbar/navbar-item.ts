@@ -1,7 +1,7 @@
-export interface Menu {
+export interface NavbarItem {
   label: string;
   link?: string;
   disabled?: boolean;
-  dropdown?: Menu[];
+  dropdown?: NavbarItem[];
   right?: boolean;
 }

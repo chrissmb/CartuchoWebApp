@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs'
+import { Observable } from 'rxjs';
 
-import { Menu } from '../menu';
+import { NavbarItem } from '../navbar-item';
 
 @Component({
   selector: 'ui-navbar-item',
@@ -11,7 +11,7 @@ import { Menu } from '../menu';
 })
 export class NavbarItemComponent implements OnInit {
 
-  @Input() item: Menu;
+  @Input() item: NavbarItem;
   @Input() sidebar = false;
   show = false;
   clickedIn = false;
@@ -23,7 +23,6 @@ export class NavbarItemComponent implements OnInit {
   ngOnInit() {}
 
   ngAfterViewChecked() {
-
   }
 
   @HostListener('document:click')

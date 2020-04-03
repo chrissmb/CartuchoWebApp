@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { UiComponentsModule } from './ui-components/ui-components.module';
 
-
-
 @NgModule({
   declarations: [],
   imports: [

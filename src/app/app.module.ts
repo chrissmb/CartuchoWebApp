@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -7,7 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 import { InvalidPageComponent } from './layout/invalid-page/invalid-page.component';
 import { LoginComponent } from './layout/login/login.component';
-
+import { AuthService } from './core/service/auth.service';
 
 
 @NgModule({
@@ -21,8 +22,11 @@ import { LoginComponent } from './layout/login/login.component';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -43,7 +43,7 @@
 
 /* Content ***********************/
 .content {
-  padding: 10px 20px;
+  padding: 20px;
 }
 .sidebar ~ .content {
   margin-left: 25%;
@@ -68,10 +68,10 @@
     overflow: hidden;
     float: none;
   }
-  
+
   .content {
     margin-left: 0;
-    padding: 0px;
+    padding: 20px 5px;
   }
 
   .sidebar ~ .content {

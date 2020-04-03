@@ -1,7 +1,7 @@
 :host {
   display: block;
   position: fixed;
-  background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(228,239,252,1) 100%);
+  background-color: #f3f3ff;
   height: 100%;
   width: 100%;
   left: 0;

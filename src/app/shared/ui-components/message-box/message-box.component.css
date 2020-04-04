@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.modal {
+  background-color: white;
+  display: none;
+  position: fixed;
+  max-width: 70%;
+  max-height: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /*Centralizar*/
+  z-index: 101;
+  overflow: auto;
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.1);
+  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
+}
+
+.modal.show {
+  display: block;
+}
+
+.bg-black {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: rgba(50, 50, 50, 0.4);
+}
+
+.bg-black.show {
+  display: block;
+}
+
+.header {
+  font-weight: bold;
+  color: white;
+  background-color: #48f;
+  position: static;
+  padding: 10px 30px;
+}
+
+.body {
+  margin: 20px;
+}
+
+.footer {
+  text-align: right;
+  margin: 10px 20px;
+}
+
+.close {
+  text-decoration: none;
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  text-align: right;
+}
+
+/* Colors ***********************/
+.green {
+  background-color: #2ba;
+}
+
+.red {
+  background-color: #f34;
+}
+
+.purple {
+  background-color: #a6c;
+}
+
+.orange {
+  background-color: #f82;
+}
+
+@media screen and (max-width: 600px) {
+  .modal {
+    max-width: 100%;
+    left: 5%;
+    right: 5%;
+    transform: translate(0, -50%); /*Centralizar*/
+  }
+}

@@ -1,0 +1,14 @@
+<div class="modal" [ngClass]="{show: show}">
+  <div [class]="'header ' + color">
+    {{ title }}
+    <a class="close" (click)="closeModal()">&times;</a>
+  </div>
+  <div class="body">
+    {{ message }}
+  </div>
+  <div class="footer">
+    <ui-btn (click)="closeModal()">Ok</ui-btn>
+  </div>
+</div>
+
+<div class="bg-black" [ngClass]="{show: show}" (click)="closeModal()"></div>

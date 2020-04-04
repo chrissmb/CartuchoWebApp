@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
 export class ModalComponent implements OnInit {
 
   @Input() color: string;
-  show = false;
+  show = true;
 
   constructor(@Inject(DOCUMENT) private document: HTMLDocument) { }
 

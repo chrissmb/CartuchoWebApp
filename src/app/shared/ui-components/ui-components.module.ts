@@ -27,6 +27,7 @@ import { CardComponent } from './card/card.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { DateFieldComponent } from './date-field/date-field.component';
 import { DatetimeFieldComponent } from './datetime-field/datetime-field.component';
+import { MessageBoxComponent } from './message-box/message-box.component';
 
 registerLocaleData(localePt);
 
@@ -57,6 +58,7 @@ registerLocaleData(localePt);
     SpinnerComponent,
     DateFieldComponent,
     DatetimeFieldComponent,
+    MessageBoxComponent,
   ],
   exports: [
     BtnComponent,

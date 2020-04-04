@@ -9,6 +9,7 @@ import { ContentLayoutComponent } from './layout/content-layout/content-layout.c
 import { InvalidPageComponent } from './layout/invalid-page/invalid-page.component';
 import { LoginComponent } from './layout/login/login.component';
 import { AuthService } from './core/service/auth.service';
+import { MessageBoxService } from './shared/ui-components/message-box/message-box.service';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AuthService } from './core/service/auth.service';
   ],
   providers: [
     AuthService,
+    MessageBoxService
   ],
   bootstrap: [AppComponent]
 })

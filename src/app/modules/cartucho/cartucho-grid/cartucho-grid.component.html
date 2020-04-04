@@ -4,13 +4,9 @@
   <th>Id</th>
   <th>Descrição</th>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>CA1010</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>CA2030</td>
+    <tr *ngFor="let cartucho of cartuchos">
+      <td>{{ cartucho.id }}</td>
+      <td>{{ cartucho.descricao }}</td>
     </tr>
   </tbody>
 </ui-grid>

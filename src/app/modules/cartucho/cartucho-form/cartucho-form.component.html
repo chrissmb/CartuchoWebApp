@@ -1,6 +1,6 @@
 <div class="id" *ngIf="cartucho.id != null"><b>Id:</b> {{ cartucho.id }}</div>
 <div>
-  <ui-text-field label="Descrição"></ui-text-field>
+  <ui-text-field label="Descrição" [(ngModel)]="cartucho.descricao"></ui-text-field>
 </div>
-<ui-btn type="success">Salvar</ui-btn>
+<ui-btn type="success" (click)="salvarCartucho()">Salvar</ui-btn>
 <ui-btn type="error" routerLink="../grid">Voltar</ui-btn>

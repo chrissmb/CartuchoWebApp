@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit {
     this.authService.autenticar(this.usuario).subscribe((usuario: Usuario) => {
       this.authService.usuarioAutenticado = usuario;
       this.router.navigate(['/content']);
-    }, erro => {
-      console.error(erro);
-      this.msgBoxService.openModal('Falha na autenticação.', 'Erro');
+    }, e => {
+      console.error(e);
+      this.msgBoxService.showMessage('Falha na autenticação', 'Erro');
     });
   }
 }

@@ -17,7 +17,7 @@ export class MessageBoxService {
     this.msgBoxFactory = this.componentFactoryResolver.resolveComponentFactory(MessageBoxComponent);
   }
 
-  openModal(message: string, title: string) {
+  showMessage(message: string, title: string) {
     if (this.msgBoxComponentRef == null) {
       this.divContainer = document.createElement('div');
       document.body.appendChild(this.divContainer);

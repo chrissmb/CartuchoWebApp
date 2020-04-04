@@ -1,7 +1,8 @@
 <ui-card title="Login" dw="4" dm="4">
   <div class="content">
     <div><ui-text-field label="Usuário" dw="12" [(ngModel)]="usuario.login"></ui-text-field></div>
-    <div><ui-text-field type="password" label="Senha" dw="12" [(ngModel)]="usuario.senhaPlana"></ui-text-field></div>
+    <div><ui-text-field type="password" label="Senha" dw="12"
+        [(ngModel)]="usuario.senhaPlana" (keyup.enter)="autenticar()"></ui-text-field></div>
   </div>
   <div class="footer">
     <ui-btn (click)="autenticar()">Login</ui-btn>

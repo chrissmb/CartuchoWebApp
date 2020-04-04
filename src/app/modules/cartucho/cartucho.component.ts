@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartuchoService } from '../../data/service/cartucho.service';
 
 @Component({
   selector: 'app-cartucho',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartuchoComponent implements OnInit {
 
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

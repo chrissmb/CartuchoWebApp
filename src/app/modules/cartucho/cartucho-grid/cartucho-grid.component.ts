@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartuchoService } from '../../../data/service/cartucho.service';
+import { Cartucho } from '../../../data/schema/cartucho';
 
 @Component({
   selector: 'app-cartucho-grid',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartuchoGridComponent implements OnInit {
 
-  constructor() { }
+  cartuchos: Cartucho[];
+
+  constructor(
+    private cartuchoService: CartuchoService
+  ) { }
 
   ngOnInit(): void {
+    this.cartuchoService.getCartuchosAtivos().subscribe(cartuchos => this.cartuchos = cartuchos);
   }
 
 }

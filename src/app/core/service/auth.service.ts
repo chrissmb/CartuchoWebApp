@@ -12,9 +12,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  autenticar(usuario: Usuario) {
-    this.http.post(`${global.apiUrlOrigin}xlogin`, JSON.stringify(usuario), {observe: 'response'})
-    .subscribe(v => console.log(v), e => console.log(e));
+  async autenticar(usuario: Usuario) {
+    let resp = null;
+    try {
+      resp = await this.http.post(`${global.apiUrlOrigin}xlogin`, JSON.stringify(usuario), {observe: 'response'}).toPromise();
+      console.log(resp.headers.get('Authorization'));
+    } catch(e) {
+      console.log(e);
+    }
+    console.log(resp);
     return false;
   }
 }

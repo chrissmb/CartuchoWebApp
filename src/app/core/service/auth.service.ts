@@ -1,26 +1,41 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { switchMap } from 'rxjs/operators';
 
 import { Usuario } from '../../data/schema/usuario';
 import * as global from '../../shared/global';
+import { Observable, EMPTY } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  usuarioAutenticado: Usuario;
+  headersRest: HttpHeaders;
+
   constructor(private http: HttpClient) { }
 
-  async autenticar(usuario: Usuario) {
-    let resp = null;
-    try {
-      resp = await this.http.post(`${global.apiUrlOrigin}xlogin`, JSON.stringify(usuario), {observe: 'response'}).toPromise();
-      console.log(resp.headers.get('Authorization'));
-    } catch(e) {
-      console.log(e);
-    }
-    console.log(resp);
-    return false;
+  autenticar(usuario: Usuario): Observable<Usuario> {
+    return this.http.post(`${global.apiUrlOrigin}xlogin`,
+        JSON.stringify(usuario), {observe: 'response'}).pipe(
+      switchMap(response => {
+        if (response == null) {
+          return EMPTY;
+        }
+        this.defineHeadersParaConsumoRest(response);
+        return this.http.get(`${global.apiUrlOrigin}usuarios/logado`,
+            {headers: this.headersRest}) as Observable<Usuario>;
+      })
+    );
+  }
+
+  private defineHeadersParaConsumoRest(reponse: HttpResponse<any>) {
+    const authorization = reponse.headers.get('Authorization');
+    const token = authorization.split(' ')[1];
+    this.headersRest = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: token,
+    });
   }
 }

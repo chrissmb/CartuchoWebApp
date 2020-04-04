@@ -1,3 +1,3 @@
 'use strict';
 
-export const apiUrlOrigin = 'https://https://cartuchos.herokuapp.com/';
+export const apiUrlOrigin = 'https://cartuchos.herokuapp.com/';

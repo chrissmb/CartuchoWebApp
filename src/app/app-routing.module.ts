@@ -5,6 +5,7 @@ import { ContentLayoutComponent } from './layout/content-layout/content-layout.c
 import { InvalidPageComponent } from './layout/invalid-page/invalid-page.component';
 import { LoginComponent } from './layout/login/login.component';
 import {} from './modules/cartucho/cartucho.module';
+import { AuthGuard } from './core/guard/auth.guard';
 
 
 const routes: Routes = [
@@ -14,6 +15,8 @@ const routes: Routes = [
   }, {
     path: 'content',
     component: ContentLayoutComponent,
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
     children: [
       {
         path: 'cartucho',

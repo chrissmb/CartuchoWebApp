@@ -10,6 +10,7 @@ import { InvalidPageComponent } from './layout/invalid-page/invalid-page.compone
 import { LoginComponent } from './layout/login/login.component';
 import { AuthService } from './core/service/auth.service';
 import { MessageBoxService } from './shared/ui-components/message-box/message-box.service';
+import { ErroService } from './core/service/erro.service';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MessageBoxService } from './shared/ui-components/message-box/message-bo
   ],
   providers: [
     AuthService,
-    MessageBoxService
+    MessageBoxService,
+    ErroService,
   ],
   bootstrap: [AppComponent]
 })

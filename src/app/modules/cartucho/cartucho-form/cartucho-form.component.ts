@@ -1,6 +1,6 @@
-import { MessageBoxService } from './../../../shared/ui-components/message-box/message-box.service';
-import { CartuchoService } from './../../../data/service/cartucho.service';
 import { Component, OnInit } from '@angular/core';
+import { CartuchoService } from './../../../data/service/cartucho.service';
+import { ErroService } from '../../../core/service/erro.service';
 import { Cartucho } from '../../../data/schema/cartucho';
 
 @Component({
@@ -14,7 +14,7 @@ export class CartuchoFormComponent implements OnInit {
 
   constructor(
     private cartuchoService: CartuchoService,
-    private msgBoxService: MessageBoxService,
+    private erroService: ErroService,
   ) { }
 
   ngOnInit(): void {
@@ -23,10 +23,7 @@ export class CartuchoFormComponent implements OnInit {
   salvarCartucho() {
     this.cartuchoService.saveCartucho(this.cartucho).subscribe(
       c => this.cartucho = c,
-      e => {
-        console.error(e);
-        this.msgBoxService.showMessage(e.error.message, 'Erro');
-      }
+      e => this.erroService.trataErro(e),
     );
   }
 }

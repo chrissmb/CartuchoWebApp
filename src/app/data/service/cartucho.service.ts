@@ -26,7 +26,6 @@ export class CartuchoService {
   }
 
   saveCartucho(cartucho: Cartucho): Observable<Cartucho> {
-    console.log(JSON.stringify(cartucho));
     return this.http.post(this.urlCartuchos, JSON.stringify(cartucho), {headers: this.headers}) as Observable<Cartucho>;
   }
 }

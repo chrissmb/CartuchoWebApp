@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BtnComponent implements OnInit {
 
-  @Input() type = "";
+  @Input() type: string;
+  @Input() disabled = false;
 
   constructor() { }
 

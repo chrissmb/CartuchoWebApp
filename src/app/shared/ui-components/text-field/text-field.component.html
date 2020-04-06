@@ -4,8 +4,11 @@
       [placeholder]="placeholder"
       [(ngModel)]="value"
       [title]="getMsgValidate()"
-      [ngClass]="{error: hasError()}"
+      [ngClass]="{error: (hasError() || refTextField.invalid) && refTextField.dirty}"
       [maxlength]="maxlength != null? maxlength: null"
       [minlength]="minlength != null? minlength: null"
-      />
+      [required]="required"
+      [name]="name"
+      [disabled]="disabled"
+      #refTextField="ngModel"/>
 </div>

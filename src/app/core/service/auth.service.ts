@@ -17,7 +17,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   autenticar(usuario: Usuario): Observable<Usuario> {
-    return this.http.post(`${global.apiUrlOrigin}xlogin`,
+    return this.http.post(`${global.apiUrlOrigin}login`,
         JSON.stringify(usuario), {observe: 'response'}).pipe(
       switchMap(response => {
         if (response == null) {

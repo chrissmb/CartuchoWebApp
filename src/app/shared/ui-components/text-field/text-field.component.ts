@@ -23,6 +23,9 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
   @Input() msgValidate: string[];
   @Input() maxlength: number;
   @Input() minlength: number;
+  @Input() required = false;
+  @Input() name: string;
+  @Input() disabled: false;
 
   largura: number;
   mobWidth = 600;

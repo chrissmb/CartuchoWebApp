@@ -18,10 +18,13 @@ export class NumberFieldComponent implements OnInit, ControlValueAccessor {
   @Input() label: string;
   @Input() mw = 12;
   @Input() dw = 6;
-  @Input() placeholder = '';
-  @Input() msgValidate: String[];
-  @Input() maxlength: number;
-  @Input() minlength: number;
+  @Input() placeholder: string;
+  @Input() msgValidate: string[];
+  @Input() max: number;
+  @Input() min: number;
+  @Input() required = false;
+  @Input() disabled = false;
+  @Input() name: string;
 
   @Output() numberValue = new EventEmitter();
 

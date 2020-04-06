@@ -1,6 +1,12 @@
 <div class="id" *ngIf="cartucho.id != null"><b>Id:</b> {{ cartucho.id }}</div>
-<div>
-  <ui-text-field label="Descrição" [(ngModel)]="cartucho.descricao"></ui-text-field>
-</div>
-<ui-btn type="success" (click)="salvarCartucho()">Salvar</ui-btn>
-<ui-btn type="error" routerLink="../grid">Voltar</ui-btn>
+
+<form (ngSubmit)="salvarCartucho()" #formCartucho="ngForm">
+  <div>
+    <ui-text-field label="Descrição"
+        [(ngModel)]="cartucho.descricao"
+        [required]="true"
+        name="descricao"></ui-text-field>
+  </div>
+  <ui-btn type="success" [disabled]="formCartucho.invalid">Salvar</ui-btn>
+  <ui-btn type="error" routerLink="../grid">Voltar</ui-btn>
+</form>

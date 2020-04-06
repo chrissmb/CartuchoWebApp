@@ -1,4 +1,9 @@
 <div class="container" [ngStyle]="{'width.%': largura}">
   <label>{{ label }}</label>
-  <input type="number" [(ngModel)]="value"/>
+  <input type="number" [(ngModel)]="value"
+  [required]="required"
+  [disabled]="disabled"
+  [name]="name"
+  [max]="max"
+  [min]="min"/>
 </div>

@@ -1,5 +1,7 @@
-export interface Departamento {
-    id?: number;
-    descricao?: string;
-    ativo: boolean;
+export class Departamento {
+    id: number;
+    descricao: string;
+    ativo = true;
+
+    constructor() {}
 }

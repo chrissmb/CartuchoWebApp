@@ -12,7 +12,7 @@ import { CartuchoService } from './../../../data/service/cartucho.service';
 })
 export class CartuchoFormComponent implements OnInit, OnDestroy {
 
-  cartucho: Cartucho = {ativo: true};
+  cartucho = new Cartucho();
   inscricao: Subscription;
   saving = false;
 

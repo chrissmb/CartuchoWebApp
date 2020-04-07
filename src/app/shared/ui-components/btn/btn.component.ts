@@ -9,6 +9,7 @@ export class BtnComponent implements OnInit {
 
   @Input() type: string;
   @Input() disabled = false;
+  @Input() notSubmit = false;
 
   constructor() { }
 

@@ -5,8 +5,10 @@
     <ui-text-field label="Descrição"
         [(ngModel)]="cartucho.descricao"
         [required]="true"
-        name="descricao"></ui-text-field>
+        name="descricao"
+        minlength="5"
+        maxlength="10"></ui-text-field>
   </div>
   <ui-btn type="success" [disabled]="formCartucho.invalid">Salvar</ui-btn>
-  <ui-btn type="error" routerLink="../grid">Voltar</ui-btn>
+  <ui-btn type="error" [notSubmit]="true" routerLink="../grid">Voltar</ui-btn>
 </form>

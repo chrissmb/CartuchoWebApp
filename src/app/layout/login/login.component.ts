@@ -13,6 +13,7 @@ import { MessageBoxService } from '../../shared/ui-components/message-box/messag
 export class LoginComponent implements OnInit {
 
   usuario: Usuario = {login: ''};
+  showSpinner = false;
 
   constructor(
     private authService: AuthService,
@@ -24,10 +25,12 @@ export class LoginComponent implements OnInit {
   }
 
   autenticar() {
+    this.showSpinner = true;
     this.authService.autenticar(this.usuario).subscribe((usuario: Usuario) => {
       this.authService.usuarioAutenticado = usuario;
       this.router.navigate(['/content']);
     }, e => {
+      this.showSpinner = false;
       console.error(e);
       this.msgBoxService.showMessage('Falha na autenticação', 'Erro');
     });

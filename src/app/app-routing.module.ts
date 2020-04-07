@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/guard/auth.guard';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 import { InvalidPageComponent } from './layout/invalid-page/invalid-page.component';
 import { LoginComponent } from './layout/login/login.component';
-import {} from './modules/cartucho/cartucho.module';
-import { AuthGuard } from './core/guard/auth.guard';
 
 
 const routes: Routes = [
@@ -20,7 +18,7 @@ const routes: Routes = [
     children: [
       {
         path: 'cartucho',
-        loadChildren: './modules/cartucho/cartucho.module#CartuchoModule',
+        loadChildren: () => import('./modules/cartucho/cartucho.module').then(m => m.CartuchoModule),
       }
     ]
   }, {

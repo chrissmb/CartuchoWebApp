@@ -68,10 +68,10 @@
 }
 
 .btn:disabled {
-  opacity: .65;
+  opacity: .40;
 }
 
 .btn.disabled {
-  opacity: .65;
+  opacity: .40;
   pointer-events: none;
 }

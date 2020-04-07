@@ -1,3 +1,5 @@
-<button [class]="'btn ' + type" [disabled]="disabled">
+<button [class]="'btn ' + type"
+    [disabled]="disabled"
+    [type]="notSubmit ? 'button' : 'submit'">
   <ng-content></ng-content>
 </button>

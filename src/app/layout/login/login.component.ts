@@ -12,7 +12,7 @@ import { MessageBoxService } from '../../shared/ui-components/message-box/messag
 })
 export class LoginComponent implements OnInit {
 
-  usuario: Usuario = {login: ''};
+  usuario: Usuario = new Usuario();
   showSpinner = false;
 
   constructor(

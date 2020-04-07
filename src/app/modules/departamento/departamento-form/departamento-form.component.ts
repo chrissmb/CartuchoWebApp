@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DepartamentoFormComponent implements OnInit, OnDestroy {
 
-  departamento: Departamento = {ativo: true};
+  departamento: Departamento = new Departamento();
   inscricao: Subscription;
   saving = false;
 

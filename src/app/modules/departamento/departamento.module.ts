@@ -5,14 +5,12 @@ import { SharedModule } from '../../shared/shared.module';
 import { DepartamentoFormComponent } from './departamento-form/departamento-form.component';
 import { DepartamentoGridComponent } from './departamento-grid/departamento-grid.component';
 import { DepartamentoRoutingModule } from './departamento-routing.module';
-import { DepartamentoComponent } from './departamento.component';
 import { DepartamentoResolver } from './departamento.resolver';
 
 
 
 @NgModule({
   declarations: [
-    DepartamentoComponent,
     DepartamentoGridComponent,
     DepartamentoFormComponent,
   ],

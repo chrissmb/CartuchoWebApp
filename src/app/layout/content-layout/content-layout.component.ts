@@ -16,7 +16,8 @@ export class ContentLayoutComponent implements OnInit {
       label: 'Estoque', dropdown: [
         {label: 'Entrada', link: 'estoque/entrada'},
         {label: 'Saída', link: 'estoque/saida'},
-        {label: 'Registros', link: 'estoque/registros'},
+        {label: 'Estoque Atual', link: 'estoque/atual'},
+        {label: 'Registros', link: 'estoque/registro'},
     ]},
   ];
 

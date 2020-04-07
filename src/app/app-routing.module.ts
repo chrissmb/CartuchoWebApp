@@ -19,6 +19,10 @@ const routes: Routes = [
       {
         path: 'cartucho',
         loadChildren: () => import('./modules/cartucho/cartucho.module').then(m => m.CartuchoModule),
+      },
+      {
+        path: 'departamento',
+        loadChildren: () => import('./modules/departamento/departamento.module').then(m => m.DepartamentoModule),
       }
     ]
   }, {

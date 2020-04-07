@@ -1,0 +1,21 @@
+<div class="id" *ngIf="departamento.id != null"><b>Id:</b> {{ departamento.id }}</div>
+
+<form (ngSubmit)="salvarDepartamento()" #formDepartamento="ngForm">
+  <div>
+    <ui-text-field label="Descrição"
+        [(ngModel)]="departamento.descricao"
+        [required]="true"
+        name="descricao"
+        minlength="2"
+        maxlength="20"></ui-text-field>
+  </div>
+  <div>
+    <ui-checkbox label="Ativo"
+        [(ngModel)]="departamento.ativo"
+        name="ativo"></ui-checkbox>
+  </div>
+  <ui-btn type="success"[disabled]="formDepartamento.invalid || formDepartamento.pristine">
+    Salvar <ui-spinner color="white" *ngIf="saving" size="5"></ui-spinner>
+  </ui-btn>
+  <ui-btn type="error" [notSubmit]="true" routerLink="../grid">Voltar</ui-btn>
+</form>

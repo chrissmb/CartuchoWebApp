@@ -1,7 +1,5 @@
-import { Component, OnInit, Input, HostListener, Renderer2, ElementRef }
-    from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, CheckboxControlValueAccessor}
-    from '@angular/forms';
+import { Component, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
+import { CheckboxControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'ui-checkbox',
@@ -20,6 +18,7 @@ export class CheckboxComponent extends CheckboxControlValueAccessor implements O
   @Input() label: string;
   @Input() mw = 12;
   @Input() dw = 6;
+  @Input() disabled = false;
 
   private innerValue;
   onChange: (_) => void;
@@ -45,8 +44,8 @@ export class CheckboxComponent extends CheckboxControlValueAccessor implements O
   }
 
   responsividade(w) {
-    let eMobile = w <= this.mobWidth;
-    let cols = eMobile? this.mw : this.dw;
+    const eMobile = w <= this.mobWidth;
+    const cols = eMobile ? this.mw : this.dw;
     this.largura = 100 / 12 * cols;
   }
 
@@ -66,8 +65,9 @@ export class CheckboxComponent extends CheckboxControlValueAccessor implements O
   }
 
   writeValue(obj) {
-    if (this.innerValue != obj)
+    if (this.innerValue != obj) {
       this.innerValue = obj;
+    }
   }
 
   registerOnChange(fn) {

@@ -16,8 +16,9 @@
           [required]=true></ui-text-field></div>
     </div>
     <div class="footer">
-      <ui-spinner *ngIf="showSpinner" color="blue"></ui-spinner>
-      <ui-btn [disabled]="formLogin.invalid">Login</ui-btn>
+      <ui-btn [disabled]="formLogin.invalid">
+        Login <ui-spinner color="blue" *ngIf="showSpinner" size="5"></ui-spinner>
+      </ui-btn>
     </div>
   </ui-card>
 </form>

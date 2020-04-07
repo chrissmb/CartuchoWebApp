@@ -10,13 +10,17 @@ import { Cartucho } from '../../../data/schema/cartucho';
 export class CartuchoGridComponent implements OnInit {
 
   cartuchos: Cartucho[];
+  loading = true;
 
   constructor(
     private cartuchoService: CartuchoService
   ) { }
 
   ngOnInit(): void {
-    this.cartuchoService.getCartuchosAtivos().subscribe(cartuchos => this.cartuchos = cartuchos);
+    this.cartuchoService.getCartuchosAtivos().subscribe(cartuchos => {
+      this.cartuchos = cartuchos;
+      this.loading = false;
+    });
   }
 
 }

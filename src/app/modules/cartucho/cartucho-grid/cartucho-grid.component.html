@@ -1,9 +1,10 @@
-<ui-btn routerLink="../novo" style="margin: 5px">Incluir</ui-btn>
+<ui-btn routerLink="../novo">Incluir</ui-btn>
 
 <ui-grid>
   <th>Id</th>
   <th>Descrição</th>
   <tbody>
+    <ui-spinner color="blue" *ngIf="loading"></ui-spinner>
     <tr *ngFor="let cartucho of cartuchos">
       <td>{{ cartucho.id }}</td>
       <td><a [routerLink]="['../', cartucho.id]">{{ cartucho.descricao }}</a></td>

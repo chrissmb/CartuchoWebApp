@@ -9,8 +9,6 @@
   border: solid black;
   border-width: 5px 5px 5px 5px ;
   border-right-color: transparent;
-  width: 25px;
-  height: 25px;
   vertical-align: text-bottom;
   border-radius: 50%;
   -webkit-animation: spin .75s linear infinite;
@@ -62,5 +60,10 @@
 
 .orange {
   border-color: #f82;
+  border-right-color: transparent;
+}
+
+.white {
+  border-color: #fff;
   border-right-color: transparent;
 }

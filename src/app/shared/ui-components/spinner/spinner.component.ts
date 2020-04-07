@@ -8,10 +8,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SpinnerComponent implements OnInit {
 
   @Input() color: string;
+  @Input() size = 25;
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }

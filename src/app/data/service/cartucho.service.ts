@@ -1,10 +1,10 @@
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from '../../core/service/auth.service';
 import * as global from '../../shared/global';
 import { Cartucho } from '../schema/cartucho';
+
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +27,11 @@ export class CartuchoService {
 
   saveCartucho(cartucho: Cartucho): Observable<Cartucho> {
     if (cartucho.id == null) {
-      return this.http.post(this.urlCartuchos, JSON.stringify(cartucho), this.options) as Observable<Cartucho>;
+      return this.http.post(this.urlCartuchos,
+          JSON.stringify(cartucho), this.options) as Observable<Cartucho>;
     } else {
-      return this.http.put(`${this.urlCartuchos}/${cartucho.id}`, JSON.stringify(cartucho), this.options) as Observable<Cartucho>;
+      return this.http.put(`${this.urlCartuchos}/${cartucho.id}`,
+          JSON.stringify(cartucho), this.options) as Observable<Cartucho>;
     }
   }
 

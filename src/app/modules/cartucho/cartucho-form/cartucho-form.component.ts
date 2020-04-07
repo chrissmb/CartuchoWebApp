@@ -12,8 +12,9 @@ import { CartuchoService } from './../../../data/service/cartucho.service';
 })
 export class CartuchoFormComponent implements OnInit, OnDestroy {
 
-  cartucho: Cartucho = {};
+  cartucho: Cartucho = {ativo: true};
   inscricao: Subscription;
+  saving = false;
 
   constructor(
     private cartuchoService: CartuchoService,
@@ -23,12 +24,11 @@ export class CartuchoFormComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.inscricao = this.route.data
-      .subscribe(data => {
-        if (data.cartucho != null) {
-          this.cartucho = data.cartucho;
-        }
-      });
+    this.inscricao = this.route.data.subscribe(data => {
+      if ((data && data.cartucho) != null) {
+        this.cartucho = data.cartucho;
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -36,11 +36,16 @@ export class CartuchoFormComponent implements OnInit, OnDestroy {
   }
 
   salvarCartucho() {
+    this.saving = true;
     this.cartuchoService.saveCartucho(this.cartucho).subscribe(
-      c => {
-        this.router.navigate(['content', 'cartucho', c.id]);
+      cartucho => {
+        this.router.navigate(['content', 'cartucho', cartucho.id]);
+        this.saving = false;
       },
-      e => this.erroService.trataErro(e),
+      erro => {
+        this.erroService.trataErro(erro);
+        this.saving = false;
+      },
     );
   }
 }

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { CartuchoGridComponent } from './cartucho-grid/cartucho-grid.component';
+import { RouterModule, Routes } from '@angular/router';
 import { CartuchoFormComponent } from './cartucho-form/cartucho-form.component';
+import { CartuchoGridComponent } from './cartucho-grid/cartucho-grid.component';
 import { CartuchoComponent } from './cartucho.component';
+import { CartuchoResolver } from './cartucho.resolver';
+
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
       } , {
         path: ':id',
         component: CartuchoFormComponent,
+        resolve: {cartucho: CartuchoResolver},
       }
     ]
   }

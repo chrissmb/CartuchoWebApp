@@ -9,6 +9,6 @@
         minlength="5"
         maxlength="10"></ui-text-field>
   </div>
-  <ui-btn type="success" [disabled]="formCartucho.invalid">Salvar</ui-btn>
+  <ui-btn type="success" [disabled]="formCartucho.invalid || formCartucho.pristine">Salvar</ui-btn>
   <ui-btn type="error" [notSubmit]="true" routerLink="../grid">Voltar</ui-btn>
 </form>

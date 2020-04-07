@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { AuthService } from '../../core/service/auth.service';
 import * as global from '../../shared/global';
@@ -11,21 +11,29 @@ import { Cartucho } from '../schema/cartucho';
 })
 export class CartuchoService {
 
-  private headers: HttpHeaders;
+  private options = {};
   private urlCartuchos = `${global.apiUrlOrigin}cartuchos`;
 
   constructor(
     private http: HttpClient,
     private authService: AuthService,
   ) {
-    this.headers = authService.headersRest;
+    this.options = {headers: authService.headersRest};
   }
 
   getCartuchosAtivos(): Observable<Cartucho[]> {
-    return this.http.get(this.urlCartuchos, {headers: this.headers}) as Observable<Cartucho[]>;
+    return this.http.get(this.urlCartuchos, this.options) as Observable<Cartucho[]>;
   }
 
   saveCartucho(cartucho: Cartucho): Observable<Cartucho> {
-    return this.http.post(this.urlCartuchos, JSON.stringify(cartucho), {headers: this.headers}) as Observable<Cartucho>;
+    if (cartucho.id == null) {
+      return this.http.post(this.urlCartuchos, JSON.stringify(cartucho), this.options) as Observable<Cartucho>;
+    } else {
+      return this.http.put(`${this.urlCartuchos}/${cartucho.id}`, JSON.stringify(cartucho), this.options) as Observable<Cartucho>;
+    }
+  }
+
+  getCartucho(id: number): Observable<Cartucho> {
+    return this.http.get(`${this.urlCartuchos}/${id}`, this.options) as Observable<Cartucho>;
   }
 }

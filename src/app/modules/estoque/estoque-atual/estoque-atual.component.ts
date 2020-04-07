@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cartucho } from '../../../data/schema/cartucho';
+import { CartuchoService } from '../../../data/service/cartucho.service';
 
 @Component({
   selector: 'app-estoque-atual',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EstoqueAtualComponent implements OnInit {
 
-  constructor() { }
+  cartuchos: Cartucho[];
+  loading = true;
+
+  constructor(private cartuchoService: CartuchoService) { }
 
   ngOnInit(): void {
+    this.cartuchoService.getCartuchosAtivos().subscribe(cartuchos => {
+      this.loading = false;
+      this.cartuchos = cartuchos;
+    });
   }
 
 }

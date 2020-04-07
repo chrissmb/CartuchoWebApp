@@ -1,1 +1,14 @@
-<p>estoque-atual works!</p>
+<ui-grid>
+    <th>Id</th>
+    <th>Descrição</th>
+    <th>Quantidade</th>
+
+    <tbody>
+        <ui-spinner color="blue" *ngIf="loading"></ui-spinner>
+        <tr *ngFor="let cartucho of cartuchos">
+            <td>{{ cartucho.id }}</td>
+            <td>{{ cartucho.descricao }}</td>
+            <td>{{ cartucho.quantidade }}</td>
+        </tr>
+    </tbody>
+</ui-grid>

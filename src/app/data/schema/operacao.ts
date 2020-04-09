@@ -1,4 +1,4 @@
 export enum Operacao {
-    ENTRADA,
-    SAIDA,
+    ENTRADA = 'Entrada',
+    SAIDA = 'Saída',
 }

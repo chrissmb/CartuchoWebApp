@@ -87,6 +87,9 @@ export class DateFieldComponent implements OnInit, ControlValueAccessor {
   }
 
   getDateFormatted(): string {
+    if (this.innerValue == null) {
+      return null;
+    }
     return this.innerValue.toISOString().slice(0,10);
   }
 

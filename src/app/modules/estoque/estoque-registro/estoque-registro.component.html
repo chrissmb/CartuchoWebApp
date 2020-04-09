@@ -1,1 +1,37 @@
-<p>estoque-registro works!</p>
+<ui-date-field label="Data início"
+    [(ngModel)]="dtInicio"
+    dw="5" mw="12"></ui-date-field>
+<ui-date-field label="Data Final"
+    [(ngModel)]="dtFinal"
+    dw="5" mw="12"></ui-date-field>
+<ui-btn (click)="consultarRegistros(1)">Filtrar</ui-btn>
+
+<ui-pagination [page]="pageNumber"
+    [totalPages]="totalPages"
+    [totalItens]="totalElements"
+    (changePage)="consultarRegistros($event)">
+
+    <ui-grid>
+        <th>Id</th>
+        <th>Operação</th>
+        <th>Cartucho</th>
+        <th>Departamento</th>
+        <th>Quantidade</th>
+        <th>Data</th>
+        <th>Usuário</th>
+        <tbody>
+            <ui-spinner color="blue" *ngIf="loading"></ui-spinner>
+            <tr *ngFor="let registro of registros"
+                    [style.color]="registro.operacao === 'ENTRADA' ? 'green' : 'red'">
+                <td>{{ registro.id }}</td>
+                <td>{{ registro.operacao === 'ENTRADA' ? 'Entrada' : 'Saída' }}</td>
+                <td>{{ registro.cartucho?.descricao }}</td>
+                <td>{{ registro.departamento?.descricao }}</td>
+                <td>{{ registro.quantidade }}</td>
+                <td>{{ registro.data | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+                <td>{{ registro.usuario?.login }}</td>
+            </tr>
+        </tbody>
+    </ui-grid>
+
+</ui-pagination>

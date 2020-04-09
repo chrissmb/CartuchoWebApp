@@ -69,8 +69,9 @@ export class NumberFieldComponent implements OnInit, ControlValueAccessor {
   set value(v) {
     let value = Number(v);
     if (this.innerValue != value) {
-      if (value == null)
+      if (value == null) {
         value = 0;
+      }
       this.innerValue = value;
       this.onChange(value);
     }
@@ -82,8 +83,8 @@ export class NumberFieldComponent implements OnInit, ControlValueAccessor {
   }
 
   responsividade() {
-    let eMobile = window.innerWidth <= this.mobWidth;
-    let cols = eMobile? this.mw : this.dw;
+    const eMobile = window.innerWidth <= this.mobWidth;
+    const cols = eMobile ? this.mw : this.dw;
     this.largura = 100 / 12 * cols;
   }
 

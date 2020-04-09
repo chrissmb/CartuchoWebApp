@@ -9,8 +9,7 @@ export class Registro {
     departamento: Departamento;
     quantidade: number;
     data: Date;
-    operacao: Operacao;
     usuario: Usuario;
 
-    constructor() {}
+    constructor(public operacao: Operacao) {}
 }

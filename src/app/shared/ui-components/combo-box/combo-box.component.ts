@@ -1,7 +1,5 @@
-import { Component, OnInit, Input, TemplateRef,
-  Renderer2, ElementRef, ViewContainerRef, HostListener } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR,
-  FormControl, SelectControlValueAccessor } from '@angular/forms';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
   selector: 'ui-combo-box',
@@ -13,13 +11,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR,
       useExisting: ComboBoxComponent,
       multi: true,
     },
-    {
-      provide: SelectControlValueAccessor,
-      useExisting: ComboBoxComponent,
-    }
   ],
 })
-export class ComboBoxComponent extends SelectControlValueAccessor implements OnInit {
+
+export class ComboBoxComponent implements OnInit, ControlValueAccessor {
 
   @Input() items: any[];
   @Input() itemValue: any;
@@ -27,7 +22,9 @@ export class ComboBoxComponent extends SelectControlValueAccessor implements OnI
   @Input() label: string;
   @Input() mw = 12;
   @Input() dw = 6;
-  @Input() msgValidate: String[];
+  @Input() msgValidate: string[];
+  @Input() required = false;
+  @Input() disabled = false;
 
   private innerValue: any;
   onChange: (_) => void;
@@ -36,12 +33,7 @@ export class ComboBoxComponent extends SelectControlValueAccessor implements OnI
   largura: number;
   mobWidth = 600;
 
-  constructor(
-    private renderer: Renderer2,
-    private elementRef: ElementRef,
-  ) {
-    super(renderer, elementRef);
-  }
+  constructor() {}
 
   ngOnInit() {
     this.responsividade(window.innerWidth);
@@ -63,8 +55,9 @@ export class ComboBoxComponent extends SelectControlValueAccessor implements OnI
   }
 
   writeValue(obj) {
-    if (this.innerValue != obj)
+    if (this.innerValue != obj) {
       this.innerValue = obj;
+    }
   }
 
   registerOnChange(fn) {
@@ -76,7 +69,7 @@ export class ComboBoxComponent extends SelectControlValueAccessor implements OnI
   }
 
   isObject(item): boolean {
-    return typeof item == "object" && this.itemLabel != null;
+    return typeof item == 'object' && this.itemLabel != null;
   }
 
   getItemValue(item): any {
@@ -88,7 +81,9 @@ export class ComboBoxComponent extends SelectControlValueAccessor implements OnI
   }
 
   getItemLabel(item): string {
-    if (item == null) return null;
+    if (item == null) {
+      return null;
+    }
     if (this.isObject(item)) {
       if (typeof this.itemLabel == 'string') {
         return item[this.itemLabel];
@@ -119,8 +114,8 @@ export class ComboBoxComponent extends SelectControlValueAccessor implements OnI
   }
 
   responsividade(w) {
-    let eMobile = w <= this.mobWidth;
-    let cols = eMobile? this.mw : this.dw;
+    const eMobile = w <= this.mobWidth;
+    const cols = eMobile ? this.mw : this.dw;
     this.largura = 100 / 12 * cols;
   }
 }

@@ -1,1 +1,20 @@
-<p>estoque-entrada works!</p>
+<form (ngSubmit)="salvarEntrada()" #formEntrada="ngForm">
+    <div>
+        <ui-combo-box label="Cartucho"
+            [(ngModel)]="registro.cartucho"
+            [items] = "cartuchos"
+            name="cartucho"
+            [required]="true"
+            itemLabel="descricao"></ui-combo-box>
+    </div>
+    <div>
+        <ui-number-field label="Quantidade"
+            [(ngModel)]="registro.quantidade"
+            min="1"
+            [required]="true"
+            name="quantidade"></ui-number-field>
+    </div>
+    <div>
+        <ui-btn type="success" [disabled]="formEntrada.invalid">Salvar</ui-btn>
+    </div>
+</form>

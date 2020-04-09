@@ -19,7 +19,6 @@ import { NavbarItemComponent } from './navbar/navbar-item/navbar-item.component'
 import { NumberFieldComponent } from './number-field/number-field.component';
 import { OnlineBoxComponent } from './online-box/online-box.component';
 import { PaginationComponent } from './pagination/pagination.component';
-import { QueryBoxComponent } from './query-box/query-box.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { TextFieldComponent } from './text-field/text-field.component';
 import { EditComboBoxComponent } from './edit-combo-box/edit-combo-box.component';
@@ -51,7 +50,6 @@ registerLocaleData(localePt);
     NumberFieldComponent,
     OnlineBoxComponent,
     PaginationComponent,
-    QueryBoxComponent,
     TabsComponent,
     TextFieldComponent,
     CardComponent,
@@ -72,7 +70,6 @@ registerLocaleData(localePt);
     NumberFieldComponent,
     OnlineBoxComponent,
     PaginationComponent,
-    QueryBoxComponent,
     TabsComponent,
     TextFieldComponent,
     CardComponent,

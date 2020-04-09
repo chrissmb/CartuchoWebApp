@@ -1,7 +1,9 @@
 <div class="container" [ngStyle]="{'width.%': largura}">
   <label>{{ label }}</label>
   <select [(ngModel)]="value"
-      [title]="getMsgValidate()" 
+      [title]="getMsgValidate()"
+      [required]="required"
+      [disabled]="disabled"
       [ngClass]="{error: hasError()}">
     <option [ngValue]="null"></option>
     <option *ngFor="let item of items" [ngValue]="getItemValue(item)">

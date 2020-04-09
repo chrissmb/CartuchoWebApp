@@ -8,6 +8,7 @@ import { EstoqueEntradaComponent } from './estoque-entrada/estoque-entrada.compo
 import { EstoqueRegistroComponent } from './estoque-registro/estoque-registro.component';
 import { EstoqueRoutingModule } from './estoque-routing.module';
 import { EstoqueSaidaComponent } from './estoque-saida/estoque-saida.component';
+import { RegistroService } from '../../data/service/registro.service';
 
 
 
@@ -26,6 +27,7 @@ import { EstoqueSaidaComponent } from './estoque-saida/estoque-saida.component';
   providers: [
     CartuchoService,
     DepartamentoService,
+    RegistroService,
   ],
 })
 export class EstoqueModule { }

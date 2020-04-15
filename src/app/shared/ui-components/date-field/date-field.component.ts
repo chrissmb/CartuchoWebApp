@@ -50,7 +50,10 @@ export class DateFieldComponent implements OnInit, ControlValueAccessor {
   }
 
   set value(v) {
-    let date = new Date(v + 'T00:00:00.000');
+    let date = null;
+    if (v != null && v !== '') {
+      date = new Date(v + 'T00:00:00.000');
+    }
     if (this.innerValue != date) {
       this.innerValue = date;
       this.onChange(date);
@@ -87,10 +90,10 @@ export class DateFieldComponent implements OnInit, ControlValueAccessor {
   }
 
   getDateFormatted(): string {
-    if (this.innerValue == null) {
+    if (this.innerValue == null || isNaN(this.innerValue.getTime())) {
       return null;
     }
-    return this.innerValue.toISOString().slice(0,10);
+    return this.innerValue.toISOString().slice(0, 10);
   }
 
 }

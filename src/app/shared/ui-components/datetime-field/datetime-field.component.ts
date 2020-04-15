@@ -50,9 +50,11 @@ export class DatetimeFieldComponent implements OnInit, ControlValueAccessor {
   }
 
   set value(v) {
-    if (v == null || v == "") return;
-    let date = new Date(v);
-    if (this.innerValue != date) {
+    let date = null as Date;
+    if (v != null && v !== '') {
+      date = new Date(v);
+    }
+    if (this.innerValue !== date) {
       this.innerValue = date;
       this.onChange(date);
     }
@@ -63,8 +65,9 @@ export class DatetimeFieldComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(obj) {
-    if (this.innerValue != obj)
+    if (this.innerValue != obj) {
       this.innerValue = obj;
+    }
   }
 
   registerOnChange(fn) {
@@ -88,8 +91,11 @@ export class DatetimeFieldComponent implements OnInit, ControlValueAccessor {
   }
 
   getDateFormatted(): string {
-    let timeZoneOffset = new Date().getTimezoneOffset() * 60000;
-    let time = this.innerValue.getTime() - timeZoneOffset;
+    if (this.innerValue == null || isNaN(this.innerValue.getTime())) {
+      return null;
+    }
+    const timeZoneOffset = new Date().getTimezoneOffset() * 60000;
+    const time = this.innerValue.getTime() - timeZoneOffset;
     return new Date(time).toISOString().slice(0,16);
   }
 

@@ -56,7 +56,7 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
   }
 
   set value(v) {
-    if (this.innerValue != v) {
+    if (this.innerValue !== v) {
       this.innerValue = v;
       this.onChange(v);
     }
@@ -67,7 +67,7 @@ export class TextFieldComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(obj) {
-    if (this.innerValue != obj) {
+    if (this.innerValue !== obj) {
       this.innerValue = obj;
     }
   }

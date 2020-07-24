@@ -19,10 +19,10 @@ export class DateFieldComponent implements OnInit, ControlValueAccessor {
   @Input() mw = 12;
   @Input() dw = 6;
   @Input() placeholder = '';
-  @Input() msgValidate: String[];
+  @Input() msgValidate: string[];
 
   private innerValue: Date;
-  private onChange: (_) => void;
+  private onChange: (_: any) => void;
   private onTouched: () => void;
 
   largura: number;
@@ -39,9 +39,9 @@ export class DateFieldComponent implements OnInit, ControlValueAccessor {
     this.responsividade(window.innerWidth);
   }
 
-  responsividade(w) {
-    let eMobile = w <= this.mobWidth;
-    let cols = eMobile? this.mw : this.dw;
+  responsividade(w: any) {
+    const eMobile = w <= this.mobWidth;
+    const cols = eMobile ? this.mw : this.dw;
     this.largura = 100 / 12 * cols;
   }
 
@@ -54,7 +54,7 @@ export class DateFieldComponent implements OnInit, ControlValueAccessor {
     if (v != null && v !== '') {
       date = new Date(v + 'T00:00:00.000');
     }
-    if (this.innerValue != date) {
+    if (this.innerValue !== date) {
       this.innerValue = date;
       this.onChange(date);
     }
@@ -65,15 +65,16 @@ export class DateFieldComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(obj) {
-    if (this.innerValue != obj)
+    if (this.innerValue !== obj) {
       this.innerValue = obj;
+    }
   }
 
-  registerOnChange(fn) {
+  registerOnChange(fn: any) {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn) {
+  registerOnTouched(fn: any) {
     this.onTouched = fn;
   }
 

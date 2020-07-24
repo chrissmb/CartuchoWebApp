@@ -19,10 +19,10 @@ export class DatetimeFieldComponent implements OnInit, ControlValueAccessor {
   @Input() mw = 12;
   @Input() dw = 6;
   @Input() placeholder = '';
-  @Input() msgValidate: String[];
+  @Input() msgValidate: string[];
 
   private innerValue: Date;
-  private onChange: (_) => void;
+  private onChange: (_: any) => void;
   private onTouched: () => void;
 
   largura: number;
@@ -39,9 +39,9 @@ export class DatetimeFieldComponent implements OnInit, ControlValueAccessor {
     this.responsividade(window.innerWidth);
   }
 
-  responsividade(w) {
-    let eMobile = w <= this.mobWidth;
-    let cols = eMobile? this.mw : this.dw;
+  responsividade(w: any) {
+    const eMobile = w <= this.mobWidth;
+    const cols = eMobile ? this.mw : this.dw;
     this.largura = 100 / 12 * cols;
   }
 
@@ -64,17 +64,17 @@ export class DatetimeFieldComponent implements OnInit, ControlValueAccessor {
     this.onTouched();
   }
 
-  writeValue(obj) {
-    if (this.innerValue != obj) {
+  writeValue(obj: any) {
+    if (this.innerValue !== obj) {
       this.innerValue = obj;
     }
   }
 
-  registerOnChange(fn) {
+  registerOnChange(fn: any) {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn) {
+  registerOnTouched(fn: any) {
     this.onTouched = fn;
   }
 
@@ -96,7 +96,7 @@ export class DatetimeFieldComponent implements OnInit, ControlValueAccessor {
     }
     const timeZoneOffset = new Date().getTimezoneOffset() * 60000;
     const time = this.innerValue.getTime() - timeZoneOffset;
-    return new Date(time).toISOString().slice(0,16);
+    return new Date(time).toISOString().slice(0, 16);
   }
 
 }

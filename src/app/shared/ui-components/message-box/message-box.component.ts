@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { AfterViewChecked, Component, Inject, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BtnComponent } from '../btn/btn.component';
 
 
@@ -8,33 +7,23 @@ import { BtnComponent } from '../btn/btn.component';
   templateUrl: './message-box.component.html',
   styleUrls: ['./message-box.component.css'],
 })
-export class MessageBoxComponent implements OnInit, AfterViewChecked{
+export class MessageBoxComponent implements OnInit {
 
   color: string;
-  show = false;
   message: string;
   title: string;
   @ViewChild('btnOk') btnOk: BtnComponent;
+  @ViewChild('dialogModal') dialogModal: ElementRef<HTMLDialogElement>;
 
-  constructor(
-    @Inject(DOCUMENT) private document: HTMLDocument,
-    private changeDetectorRef: ChangeDetectorRef,
-  ) {}
-
-  ngAfterViewChecked(): void {
-    this.changeDetectorRef.detectChanges();
-  }
+  constructor() {}
 
   ngOnInit() {}
 
   showModal() {
-    this.show = true;
-    this.document.body.style.overflow = 'hidden';
-    this.btnOk.btnElement.nativeElement.focus();
+    this.dialogModal.nativeElement.showModal();
   }
 
   closeModal() {
-    this.show = false;
-    this.document.body.style.overflow = 'auto';
+    this.dialogModal.nativeElement.close();
   }
 }

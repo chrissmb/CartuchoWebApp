@@ -1,4 +1,4 @@
-<div class="modal" [ngClass]="{show: show}">
+<dialog class="modal" #dialogModal>
   <div [class]="'header ' + color">
     {{ title }}
     <a class="close" (click)="closeModal()">&times;</a>
@@ -9,6 +9,4 @@
   <div class="footer">
     <ui-btn (click)="closeModal()" #btnOk>Ok</ui-btn>
   </div>
-</div>
-
-<div class="bg-black" [ngClass]="{show: show}" (click)="closeModal()"></div>
+</dialog>

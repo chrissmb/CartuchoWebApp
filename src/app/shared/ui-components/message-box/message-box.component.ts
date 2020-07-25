@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, Inject, ComponentRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { MessageBoxService } from './message-box.service';
+import { AfterViewChecked, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { BtnComponent } from '../btn/btn.component';
 
 
 @Component({
@@ -8,21 +8,26 @@ import { MessageBoxService } from './message-box.service';
   templateUrl: './message-box.component.html',
   styleUrls: ['./message-box.component.css']
 })
-export class MessageBoxComponent implements OnInit {
+export class MessageBoxComponent implements OnInit, AfterViewChecked{
 
-  @Input() color: string;
+  color: string;
   show = false;
-  modalRef: ComponentRef<MessageBoxComponent>;
   message: string;
   title: string;
+  @ViewChild('btnOk') btnOk: BtnComponent;
 
   constructor(@Inject(DOCUMENT) private document: HTMLDocument) {}
+
+  ngAfterViewChecked(): void {
+    this.btnOk.btnElement.nativeElement.focus();
+  }
 
   ngOnInit() {}
 
   showModal() {
     this.show = true;
     this.document.body.style.overflow = 'hidden';
+    this.btnOk.btnElement.nativeElement.focus();
   }
 
   closeModal() {

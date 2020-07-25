@@ -1,5 +1,6 @@
 <button [class]="'btn ' + type"
     [disabled]="disabled"
-    [type]="notSubmit ? 'button' : 'submit'">
+    [type]="notSubmit ? 'button' : 'submit'"
+    #btnElement>
   <ng-content></ng-content>
 </button>

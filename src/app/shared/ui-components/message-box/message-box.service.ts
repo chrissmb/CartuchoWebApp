@@ -1,4 +1,4 @@
-import { Injectable, ComponentFactory, ComponentRef, ApplicationRef, ComponentFactoryResolver } from '@angular/core';
+import { ApplicationRef, ComponentFactory, ComponentFactoryResolver, ComponentRef, Injectable } from '@angular/core';
 import { MessageBoxComponent } from './message-box.component';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class MessageBoxService {
     this.msgBoxFactory = this.componentFactoryResolver.resolveComponentFactory(MessageBoxComponent);
   }
 
-  showMessage(message: string, title: string) {
+  showMessage(message: string, title: string, color?: string) {
     if (this.msgBoxComponentRef == null) {
       this.divContainer = document.createElement('div');
       document.body.appendChild(this.divContainer);
@@ -25,6 +25,9 @@ export class MessageBoxService {
     }
     this.msgBoxComponentRef.instance.message = message;
     this.msgBoxComponentRef.instance.title = title;
+    if (color != null && color !== '') {
+      this.msgBoxComponentRef.instance.color = color;
+    }
     this.msgBoxComponentRef.instance.showModal();
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'ui-btn',
@@ -10,10 +10,10 @@ export class BtnComponent implements OnInit {
   @Input() type: string;
   @Input() disabled = false;
   @Input() notSubmit = false;
+  @ViewChild('btnElement') btnElement: ElementRef<HTMLButtonElement>;
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }

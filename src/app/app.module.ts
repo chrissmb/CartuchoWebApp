@@ -11,6 +11,7 @@ import { LoginComponent } from './layout/login/login.component';
 import { AuthService } from './core/service/auth.service';
 import { MessageBoxService } from './shared/ui-components/message-box/message-box.service';
 import { ErroService } from './core/service/erro.service';
+import { AssyncSpinnerService } from './shared/ui-components/assync-spinner/assync-spinner.service';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ErroService } from './core/service/erro.service';
     AuthService,
     MessageBoxService,
     ErroService,
+    AssyncSpinnerService,
   ],
   bootstrap: [AppComponent]
 })

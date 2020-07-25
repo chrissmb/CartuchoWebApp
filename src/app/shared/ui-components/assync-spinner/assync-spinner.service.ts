@@ -7,10 +7,10 @@ import { Observable, Observer } from 'rxjs';
 })
 export class AssyncSpinnerService {
 
-  divContainer: HTMLDivElement;
-  assyncSpinnerFactory: ComponentFactory<AssyncSpinnerComponent>;
-  assyncSpinnerComponentRef: ComponentRef<AssyncSpinnerComponent>;
-  assyncSpinner: AssyncSpinnerComponent;
+  private divContainer: HTMLDivElement;
+  private assyncSpinnerFactory: ComponentFactory<AssyncSpinnerComponent>;
+  private assyncSpinnerComponentRef: ComponentRef<AssyncSpinnerComponent>;
+  private assyncSpinner: AssyncSpinnerComponent;
 
   constructor(
     private componentFatctoryResolver: ComponentFactoryResolver,

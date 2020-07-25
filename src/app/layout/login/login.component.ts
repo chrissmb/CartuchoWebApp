@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../data/schema/usuario';
 import { Router } from '@angular/router';
 import { MessageBoxService } from '../../shared/ui-components/message-box/message-box.service';
+import { AssyncSpinnerService } from '../../shared/ui-components/assync-spinner/assync-spinner.service';
 
 @Component({
   selector: 'app-login',
@@ -13,26 +14,27 @@ import { MessageBoxService } from '../../shared/ui-components/message-box/messag
 export class LoginComponent implements OnInit {
 
   usuario: Usuario = new Usuario();
-  showSpinner = false;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private msgBoxService: MessageBoxService,
+    private assyncSpinnerService: AssyncSpinnerService,
   ) { }
 
   ngOnInit(): void {
   }
 
   autenticar() {
-    this.showSpinner = true;
-    this.authService.autenticar(this.usuario).subscribe((usuario: Usuario) => {
-      this.authService.usuarioAutenticado = usuario;
-      this.router.navigate(['/content']);
-    }, e => {
-      this.showSpinner = false;
-      console.error(e);
-      this.msgBoxService.showMessage('Falha na autenticação', 'Erro');
-    });
+    this.assyncSpinnerService.subscribeObservable(
+      this.authService.autenticar(this.usuario),
+      (usuario: Usuario) => {
+        this.authService.usuarioAutenticado = usuario;
+        this.router.navigate(['/content']);
+      }, e => {
+        console.error(e);
+        this.msgBoxService.showMessage('Falha na autenticação', 'Erro');
+      }
+    );
   }
 }

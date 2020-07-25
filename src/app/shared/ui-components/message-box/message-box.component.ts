@@ -1,12 +1,12 @@
 import { DOCUMENT } from '@angular/common';
-import { AfterViewChecked, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, Inject, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { BtnComponent } from '../btn/btn.component';
 
 
 @Component({
   selector: 'app-message-box',
   templateUrl: './message-box.component.html',
-  styleUrls: ['./message-box.component.css']
+  styleUrls: ['./message-box.component.css'],
 })
 export class MessageBoxComponent implements OnInit, AfterViewChecked{
 
@@ -16,10 +16,13 @@ export class MessageBoxComponent implements OnInit, AfterViewChecked{
   title: string;
   @ViewChild('btnOk') btnOk: BtnComponent;
 
-  constructor(@Inject(DOCUMENT) private document: HTMLDocument) {}
+  constructor(
+    @Inject(DOCUMENT) private document: HTMLDocument,
+    private changeDetectorRef: ChangeDetectorRef,
+  ) {}
 
   ngAfterViewChecked(): void {
-    this.btnOk.btnElement.nativeElement.focus();
+    this.changeDetectorRef.detectChanges();
   }
 
   ngOnInit() {}

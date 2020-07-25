@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { ErroService } from '../../../core/service/erro.service';
 import { Cartucho } from '../../../data/schema/cartucho';
 import { CartuchoService } from './../../../data/service/cartucho.service';
+import { AssyncSpinnerService } from '../../../shared/ui-components/assync-spinner/assync-spinner.service';
 
 @Component({
   selector: 'app-cartucho-form',
@@ -14,18 +15,18 @@ export class CartuchoFormComponent implements OnInit, OnDestroy {
 
   cartucho = new Cartucho();
   inscricao: Subscription;
-  saving = false;
 
   constructor(
     private cartuchoService: CartuchoService,
     private erroService: ErroService,
     private route: ActivatedRoute,
     private router: Router,
+    private assyncSpinnerService: AssyncSpinnerService,
   ) { }
 
   ngOnInit(): void {
     this.inscricao = this.route.data.subscribe(data => {
-      if ((data && data.cartucho) != null) {
+      if (data && data.cartucho) {
         this.cartucho = data.cartucho;
       }
     });
@@ -36,16 +37,10 @@ export class CartuchoFormComponent implements OnInit, OnDestroy {
   }
 
   salvarCartucho() {
-    this.saving = true;
-    this.cartuchoService.saveCartucho(this.cartucho).subscribe(
-      cartucho => {
-        this.router.navigate(['content', 'cartucho', cartucho.id]);
-        this.saving = false;
-      },
-      erro => {
-        this.erroService.trataErro(erro);
-        this.saving = false;
-      },
+    this.assyncSpinnerService.subscribeObservable(
+      this.cartuchoService.saveCartucho(this.cartucho),
+      cartucho => this.router.navigate(['content', 'cartucho', cartucho.id]),
+      erro => this.erroService.trataErro(erro),
     );
   }
 }

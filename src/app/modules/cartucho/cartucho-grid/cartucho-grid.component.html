@@ -4,7 +4,6 @@
   <th>Id</th>
   <th>Descrição</th>
   <tbody>
-    <ui-spinner color="blue" *ngIf="loading"></ui-spinner>
     <tr *ngFor="let cartucho of cartuchos">
       <td>{{ cartucho.id }}</td>
       <td><a [routerLink]="['../', cartucho.id]">{{ cartucho.descricao }}</a></td>

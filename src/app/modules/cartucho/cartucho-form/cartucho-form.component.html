@@ -1,6 +1,6 @@
 <div class="id" *ngIf="cartucho.id != null">Id: {{ cartucho.id }}</div>
 
-<form (ngSubmit)="salvarCartucho()" #formCartucho="ngForm">
+<form (ngSubmit)="salvarCartucho(); formCartucho.form.markAsPristine()" #formCartucho="ngForm">
   <div>
     <ui-text-field label="Descrição"
         [(ngModel)]="cartucho.descricao"
@@ -14,8 +14,7 @@
         [(ngModel)]="cartucho.ativo"
         name="ativo"></ui-checkbox>
   </div>
-  <ui-btn type="success" [disabled]="formCartucho.invalid || formCartucho.pristine">
-    Salvar <ui-spinner color="white" size="5" *ngIf="saving"></ui-spinner>
-  </ui-btn>
+  <ui-btn type="success"
+      [disabled]="formCartucho.invalid || formCartucho.pristine">Salvar</ui-btn>
   <ui-btn type="error" [notSubmit]="true" routerLink="../grid">Voltar</ui-btn>
 </form>

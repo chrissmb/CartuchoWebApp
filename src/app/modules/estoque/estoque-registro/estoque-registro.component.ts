@@ -4,6 +4,7 @@ import { Registro } from '../../../data/schema/registro';
 import { RegistroService } from '../../../data/service/registro.service';
 import { ErroService } from '../../../core/service/erro.service';
 import { Operacao } from '../../../data/schema/operacao';
+import { AssyncSpinnerService } from '../../../shared/ui-components/assync-spinner/assync-spinner.service';
 
 @Component({
   selector: 'app-estoque-registro',
@@ -20,11 +21,11 @@ export class EstoqueRegistroComponent implements OnInit {
   dtFinal: Date;
   totalElements: number;
   totalPages: number;
-  loading = false;
 
   constructor(
     private registroService: RegistroService,
     private erroService: ErroService,
+    private assyncSpinnerService: AssyncSpinnerService,
   ) { }
 
   ngOnInit(): void {
@@ -32,24 +33,19 @@ export class EstoqueRegistroComponent implements OnInit {
 
   consultarRegistros(pagina: number) {
     this.registros = [];
-    this.loading = true;
-    this.registroService.getRegistrosPageable(
-      pagina - 1,
-      this.SIZE_PAGE,
-      this.dtInicio,
-      this.dtFinal
-    ).subscribe(
-      page => {
+
+    this.assyncSpinnerService.subscribeObservable(
+      this.registroService.getRegistrosPageable(
+        pagina - 1,
+        this.SIZE_PAGE,
+        this.dtInicio,
+        this.dtFinal
+      ), page => {
         this.registros = page.content;
         this.pageNumber = page.number + 1;
         this.totalPages = page.totalPages;
         this.totalElements = page.totalElements;
-        this.loading = false;
-      },
-      erro => {
-        this.erroService.trataErro(erro);
-        this.loading = false;
-      }
+      }, erro => this.erroService.trataErro(erro),
     );
   }
 }

@@ -1,6 +1,7 @@
 <div class="id" *ngIf="departamento.id != null">Id: {{ departamento.id }}</div>
 
-<form (ngSubmit)="salvarDepartamento()" #formDepartamento="ngForm">
+<form (ngSubmit)="salvarDepartamento(); formDepartamento.form.markAsPristine()"
+    #formDepartamento="ngForm">
   <div>
     <ui-text-field label="Descrição"
         [(ngModel)]="departamento.descricao"
@@ -15,7 +16,7 @@
         name="ativo"></ui-checkbox>
   </div>
   <ui-btn type="success"[disabled]="formDepartamento.invalid || formDepartamento.pristine">
-    Salvar <ui-spinner color="white" *ngIf="saving" size="5"></ui-spinner>
+    Salvar
   </ui-btn>
   <ui-btn type="error" [notSubmit]="true" routerLink="../grid">Voltar</ui-btn>
 </form>

@@ -5,6 +5,7 @@ import { CartuchoService } from '../../../data/service/cartucho.service';
 import { Cartucho } from '../../../data/schema/cartucho';
 import { Operacao } from '../../../data/schema/operacao';
 import { ErroService } from '../../../core/service/erro.service';
+import { AssyncSpinnerService } from '../../../shared/ui-components/assync-spinner/assync-spinner.service';
 
 @Component({
   selector: 'app-estoque-entrada',
@@ -15,12 +16,12 @@ export class EstoqueEntradaComponent implements OnInit {
 
   registro = new Registro(Operacao.ENTRADA);
   cartuchos: Cartucho[];
-  saving = false;
 
   constructor(
     private registroService: RegistroService,
     private cartuchoService: CartuchoService,
     private erroService: ErroService,
+    private assyncSpinnerService: AssyncSpinnerService,
   ) { }
 
   ngOnInit(): void {
@@ -29,16 +30,10 @@ export class EstoqueEntradaComponent implements OnInit {
   }
 
   salvarEntrada() {
-    this.saving = true;
-    this.registroService.addRegisto(this.registro).subscribe(
-      registro => {
-        this.registro = new Registro(Operacao.ENTRADA);
-        this.saving = false;
-      },
-      erro => {
-        this.erroService.trataErro(erro);
-        this.saving = false;
-      },
+    this.assyncSpinnerService.subscribeObservable(
+      this.registroService.addRegisto(this.registro),
+      registro => this.registro = new Registro(Operacao.ENTRADA),
+      erro => this.erroService.trataErro(erro),
     );
   }
 }

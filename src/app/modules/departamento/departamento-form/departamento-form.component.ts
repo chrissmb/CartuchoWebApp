@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { DepartamentoService } from '../../../data/service/departamento.service';
 import { ErroService } from '../../../core/service/erro.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AssyncSpinnerService } from '../../../shared/ui-components/assync-spinner/assync-spinner.service';
 
 @Component({
   selector: 'app-departamento-form',
@@ -14,13 +15,13 @@ export class DepartamentoFormComponent implements OnInit, OnDestroy {
 
   departamento: Departamento = new Departamento();
   inscricao: Subscription;
-  saving = false;
 
   constructor(
     private departamentoService: DepartamentoService,
     private erroService: ErroService,
     private route: ActivatedRoute,
     private router: Router,
+    private assyncSpinnerService: AssyncSpinnerService,
   ) { }
 
   ngOnInit(): void {
@@ -36,16 +37,10 @@ export class DepartamentoFormComponent implements OnInit, OnDestroy {
   }
 
   salvarDepartamento() {
-    this.saving = true;
-    this.departamentoService.saveDepartamento(this.departamento).subscribe(
-      depto => {
-        this.router.navigate(['content', 'departamento', depto.id]);
-        this.saving = false;
-      },
-      erro => {
-        this.erroService.trataErro(erro);
-        this.saving = false;
-      },
+    this.assyncSpinnerService.subscribeObservable(
+      this.departamentoService.saveDepartamento(this.departamento),
+      depto => this.router.navigate(['content', 'departamento', depto.id]),
+      erro => this.erroService.trataErro(erro),
     );
   }
 }

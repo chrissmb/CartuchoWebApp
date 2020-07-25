@@ -27,6 +27,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { DateFieldComponent } from './date-field/date-field.component';
 import { DatetimeFieldComponent } from './datetime-field/datetime-field.component';
 import { MessageBoxComponent } from './message-box/message-box.component';
+import { AssyncSpinnerComponent } from './assync-spinner/assync-spinner.component';
 
 registerLocaleData(localePt);
 
@@ -57,6 +58,7 @@ registerLocaleData(localePt);
     DateFieldComponent,
     DatetimeFieldComponent,
     MessageBoxComponent,
+    AssyncSpinnerComponent,
   ],
   exports: [
     BtnComponent,

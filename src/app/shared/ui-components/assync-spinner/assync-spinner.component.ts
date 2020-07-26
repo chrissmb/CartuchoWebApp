@@ -7,17 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssyncSpinnerComponent implements OnInit {
 
-  show = false;
+  poolRequisition: number[] = [];
 
   constructor() { }
 
   ngOnInit(): void {}
 
   showSpinner() {
-    this.show = true;
+    this.poolRequisition.push(1);
   }
 
   closeSpinner() {
-    this.show = false;
+    this.poolRequisition.pop();
+  }
+
+  isShow(): boolean {
+    return this.poolRequisition && this.poolRequisition.length > 0;
   }
 }
